@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>ALVIA DITA</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background-color: aliceblue;
+        overflow: hidden;
+      }
+
+      .card {
+        background-color: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        position: relative;
+        width: 300px;
+      }
+
+      .button {
+        padding: 10px 20px;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      .button-yes {
+        background-color: green;
+        color: white;
+      }
+
+      .button-no {
+        background-color: red;
+        color: white;
+      }
+
+      .thank-you {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.8);
+        display: none;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        font-size: 24px;
+        border-radius: 10px;
+      }
+
+      .thank-you p {
+        padding: 20px;
+        background-color: black;
+        color: white;
+        border-radius: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <p>Mams jajan dlu dg :)</p>
+      <button class="button button-yes">Iya</button>
+      <button class="button button-no">No</button>
+    </div>
+    <div class="thank-you">
+      <p>Sukur mo anto! muahh</p>
+    </div>
+
+    <script>
+      // Mendapatkan elemen tombol dan elemen terima kasih
+      const buttonYes = document.querySelector(".button-yes");
+      const buttonNo = document.querySelector(".button-no");
+      const thankYouMessage = document.querySelector(".thank-you");
+
+      // Menambahkan event listener untuk tombol "Iya"
+      buttonYes.addEventListener("click", () => {
+        thankYouMessage.style.display = "flex"; // Menampilkan pesan terima kasih
+      });
+
+      // Menambahkan event listener untuk tombol "No"
+      buttonNo.addEventListener("click", () => {
+        // Mengubah posisi tombol "No" secara acak
+        const card = document.querySelector(".card");
+        const cardRect = card.getBoundingClientRect();
+        const buttonNoRect = buttonNo.getBoundingClientRect();
+
+        // Menghitung posisi acak dalam batas card
+        const randomX = Math.random() * (cardRect.width - buttonNoRect.width);
+        const randomY = Math.random() * (cardRect.height - buttonNoRect.height);
+
+        // Mengatur posisi tombol "No"
+        buttonNo.style.position = "absolute";
+        buttonNo.style.left = `${randomX}px`;
+        buttonNo.style.top = `${randomY}px`;
+      });
+    </script>
+  </body>
+</html>
